@@ -29,7 +29,6 @@ import { CartItem } from '../../models/cartItem';
     ToastrModule,
   ],
   templateUrl: './car.component.html',
-  styleUrl: './car.component.scss',
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
