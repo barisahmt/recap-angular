@@ -1,0 +1,60 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label">Search A Car</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="exampleFormControlInput1"
+    placeholder="What Are You Looking"
+  />
+</div>
+
+@if (filterText) {
+<div class="alert alert-danger">{{ filterText }} aradınız</div>
+}
+<div class="card">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>İşlemler</th>
+          <th>Renk</th>
+          <th>Marka</th>
+          <th>Model</th>
+          <th>Motor</th>
+          <th>Kapı</th>
+          <th>Günlük Ücret</th>
+          <th>KDV'Li</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(car of cars | filterPipe: filterText; track car.id ) {
+        <tr>
+          <td>
+            <button class="btn btn-sm btn-success" (click)="addToCart(car)">
+              Sepete ekle
+            </button>
+          </td>
+          <td>{{ car.colourName | uppercase }}</td>
+          <td>{{ car.brandName }}</td>
+          <td>{{ car.description | uppercase }}</td>
+          <td>{{ car.engineType }}</td>
+          <td>{{ car.doorNumber }}</td>
+          <td>{{ car.dailyPrice | currency }}</td>
+          <td>{{ car.dailyPrice | vatAdded : 18 | currency }}</td>
+        </tr>
+        } @empty { @if (dataLoaded === false) {
+        <tr>
+          <td colspan="8" class="text-center">
+            <div class="spinner-border text-primary btn-xs" role="status"></div>
+          </td>
+        </tr>
+        } @else {
+        <tr>
+          <td colspan="8" class="text-center">Kayıt bulunamadı</td>
+        </tr>
+        } }
+      </tbody>
+    </table>
+  </div>
+</div>

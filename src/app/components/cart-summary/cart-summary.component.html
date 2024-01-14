@@ -1,0 +1,20 @@
+<div *ngIf="cartItems.length > 0" class="dropdown">
+  <button
+    class="btn dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Sepet ({{ cartItems.length }})
+  </button>
+
+  <ul class="dropdown-menu">
+    @for(item of cartItems; track item.Car.id) {
+    <li>
+      <a class="dropdown-item" href="#"
+        >{{ item.Car.brandName }} ({{ item.quantity }})</a
+      >
+    </li>
+    }
+  </ul>
+</div>

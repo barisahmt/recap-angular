@@ -1,0 +1,15 @@
+<ul class="list-group">
+  @for (brand of brands; track brand.id) {
+  <li
+  (click)="setCurrentBrand(brand)"
+  routerLink="/cars/brand/{{brand.id}}"
+  [class]="setCurrentBrandActive(brand)">
+    {{ brand.name }}
+  </li>
+  }
+  @if(currenBrand) {
+    <h6>{{currenBrand.name}}</h6>
+  }
+
+</ul>
+<!-- [routerLink] = "['/car/brand', brand.id]" -->
