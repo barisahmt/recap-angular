@@ -1,4 +1,4 @@
-<div *ngIf="cartItems.length > 0" class="dropdown">
+<div class="dropdown">
   <button
     class="btn dropdown-toggle"
     type="button"
@@ -11,9 +11,12 @@
   <ul class="dropdown-menu">
     @for(item of cartItems; track item.Car.id) {
     <li>
-      <a class="dropdown-item" href="#"
-        >{{ item.Car.brandName }} ({{ item.quantity }})</a
-      >
+      <a class="dropdown-item"
+        >{{ item.Car.brandName }} ({{ item.quantity }})
+        <i (click)="clearAllItem(item.Car)" class="bi bi-trash3"></i>
+        <i (click)="plusAllItem(item.Car)" class="bi bi-plus-circle"></i>
+        <i (click)="removeToCart(item.Car)" class="bi bi-dash-circle"></i>
+      </a>
     </li>
     }
   </ul>
