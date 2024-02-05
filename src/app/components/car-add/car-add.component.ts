@@ -8,26 +8,28 @@ import {
 } from '@angular/forms';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { CarService } from '../../services/car.service';
+import { Brand } from '../../models/brand';
 
 @Component({
   selector: 'app-car-add',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, FormsModule, ToastrModule],
+  imports: [ReactiveFormsModule, FormsModule, ToastrModule],
   templateUrl: './car-add.component.html',
 })
 export class CarAddComponent implements OnInit {
+  brands : Brand[]
   carAddForm: FormGroup;
   form: any;
 
-  constructor(
+  constructor(    
     private formBuider: FormBuilder,
     private toastrService: ToastrService,
     private carService: CarService
   ) {}
   ngOnInit(): void {
-    this.createProductAddForm();
+    this.createCarAddForm();
   }
-  createProductAddForm() {
+  createCarAddForm() {
     this.carAddForm = this.formBuider.group({
       id: ['0', Validators.required],
       brandId: ['', Validators.required],
