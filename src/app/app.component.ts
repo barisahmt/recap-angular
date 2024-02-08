@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { NaviComponent } from './components/navi/navi.component';
+import { NaviComponent } from './pages/navi/navi.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './components/login/login.component';
-import { CarComponent } from './components/car/car.component';
-import { BrandComponent } from './components/brand/brand.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CarComponent } from './pages/car/car.component';
+import { BrandComponent } from './pages/brand/brand.component';
+import { CarAddComponent } from './pages/car-add/car-add.component';
 
 
 @Component({

@@ -1,15 +1,15 @@
-export interface Car{
+export type CarDto = {
     id :number
-    brandName : string
-    colourName : string
+    brandId: number
+    colourId :number
     companyName :string
-    engineType : string
+    engineId : number
     fuelId : number
-    fuelType : string
+    fuelConsumption : number
     doorNumber : number
     userId : number
     modelYear : number
     dailyPrice : any
     description : string
-    images : string[]
+    images : any[]
 }

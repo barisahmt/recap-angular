@@ -27,6 +27,7 @@ import { CartItem } from '../../models/cartItem';
     FormsModule,
     FilterPipe,
     ToastrModule,
+
   ],
   templateUrl: './car.component.html',
 })
@@ -35,6 +36,7 @@ export class CarComponent implements OnInit {
   dataLoaded = false;
   filterText = '';
   carAdded = false;
+  i : number = 0;
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,

@@ -1,3 +1,3 @@
-export interface ListResponceMoel<T>{
+export interface ListResponceModel<T>{
     data:T[]
 }

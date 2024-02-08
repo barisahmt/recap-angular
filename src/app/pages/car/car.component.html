@@ -1,0 +1,52 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label">Search A Car</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="exampleFormControlInput1"
+    placeholder="What Are You Looking"
+  />
+</div>
+<div class="grid-container">
+  @if (filterText) {
+    <div class="alert alert-danger">{{ filterText }} aradınız</div>
+  }
+
+  <div class="row">
+    @for (car of cars | filterPipe: filterText; track car.id) {
+      <div class="col-4">
+        <div class="card shadow-sm">
+          <img src="{{ car.images[0] }}" />
+          <div class="card-body">
+            <p class="card-text">{{ car.description }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <p type="">Brnad : {{ car.brandName }}</p>
+              </div>
+              <div class="">
+                <p type="button">Price :{{ car.dailyPrice | currency }}</p>
+              </div>
+              <small class="text-body-secondary">9 mins</small>
+            </div>
+              <button class="btn btn-sm btn-success" (click)="addToCart(car)">
+                Sepete ekle
+              </button>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      @if (dataLoaded === false) {
+        <tr>
+          <td colspan="8" class="text-center">
+            <div class="spinner-border text-primary btn-xs" role="status"></div>
+          </td>
+        </tr>
+      } @else {
+        <tr>
+          <td colspan="8" class="text-center">Kayıt bulunamadı</td>
+        </tr>
+      }
+    }
+  </div>
+</div>

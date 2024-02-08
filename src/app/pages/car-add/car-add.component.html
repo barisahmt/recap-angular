@@ -1,0 +1,143 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Add Car</h5>
+        <div class="card-body">
+          <form [formGroup]="carAddForm">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="brandId">Brand Name</label>
+                <select
+                  id="brandId"
+                  formControlName="brandId"
+                  class="form-control"
+                >
+                  <option value="" disabled selected>Select a Brand</option>
+                  @for (brand of brands; track brand.id) {
+                    <option [ngValue]="brand.id">
+                      {{ brand.name }}
+                    </option>
+                  }
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="colourId">Colour</label>
+                <select
+                  id="colourId"
+                  formControlName="colourId"
+                  class="form-control"
+                >
+                  <option value="" disabled selected>Select a Colour</option>
+                  @for (colour of colours; track colours) {
+                    <option [ngValue]="colour.id">
+                      {{ colour.name }}
+                    </option>
+                  }
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="engineId">Engine</label>
+                <select
+                  id="engineId"
+                  formControlName="engineId"
+                  class="form-control"
+                >
+                  <option value="" disabled selected>Select an Engine</option>
+                  @for (engine of engines; track engines) {
+                    <option [ngValue]="engine.id">
+                      {{ engine.type }}
+                    </option>
+                  }
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="fuelId">Fuel</label>
+                <select
+                  id="fuelId"
+                  formControlName="fuelId"
+                  class="form-control"
+                >
+                  <option value="" disabled selected>Select a Fuel</option>
+
+                  <!-- *ngFor kullanarak yakıt türlerini döngüye al -->
+                  @for (fuel of fuels; track fuels) {
+                    <option [ngValue]="fuel.id">
+                      {{ fuel.type }}
+                    </option>
+                  }
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="fuelConsumption">Fuel Consumption</label>
+                <input
+                  type="number"
+                  id="fuelConsumption"
+                  formControlName="fuelConsumption"
+                  class="form-control"
+                  placeholder="Fuel Consumption"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="doorNumber">Door Number</label>
+                <input
+                  type="number"
+                  id="doorNumber"
+                  formControlName="doorNumber"
+                  class="form-control"
+                  placeholder="Door Number"
+                />
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="modelYear">Model Year</label>
+                <input
+                  type="number"
+                  id="modelyYear"
+                  formControlName="modelYear"
+                  class="form-control"
+                  placeholder="Model Year"
+                />
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="dailyPrice">Daily Price</label>
+                <input
+                  type="number"
+                  id="dailyPrice"
+                  formControlName="dailyPrice"
+                  class="form-control"
+                  placeholder="Daily Price"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="description">Description</label>
+                <input
+                  type="text"
+                  id="description"
+                  formControlName="description"
+                  class="form-control"
+                  placeholder="Description"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="description">İmages</label>
+                <input
+                  multiple
+                  type="file"
+                  id="images"
+                  formControlName="images"
+                  class="form-control"
+                  placeholder="İmages"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-primary" (click)="add()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
