@@ -6,7 +6,7 @@ import {
   TitleCasePipe,
   UpperCasePipe,
 } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { VatAddedPipe } from '../../pipes/vat-added.pipe';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../../pipes/filter-pipe.pipe';
@@ -14,6 +14,9 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { CarService } from '../../services/car.service';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../models/cartItem';
+import { ClearCar } from '../../models/clearCar';
+import { CarDto } from '../../models/carDto';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-car',
@@ -27,7 +30,6 @@ import { CartItem } from '../../models/cartItem';
     FormsModule,
     FilterPipe,
     ToastrModule,
-
   ],
   templateUrl: './car.component.html',
 })
@@ -35,13 +37,16 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   dataLoaded = false;
   filterText = '';
+  files: File[];
   carAdded = false;
-  i : number = 0;
+  i: number = 0;
+
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +58,23 @@ export class CarComponent implements OnInit {
       }
     });
   }
+  onChange(event: any) {
+    if (event.target.files) {
+      this.files = event.target.files;
+    }
+  }
+
+  delete(id: number) {
+    this.carService
+      .delete(id)
+      .pipe(
+        catchError((err) => {
+          this.toastrService.error('An error occurred while deleting the car.');
+          throw err;
+        }),
+      )
+      .subscribe(() => this.toastrService.success('Success'));
+  }
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
@@ -62,7 +84,6 @@ export class CarComponent implements OnInit {
   getCarsByBrandId(brandId: number) {
     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
       this.cars = response.data;
-      this.dataLoaded = true;
     });
   }
   addToCart(car: Car) {

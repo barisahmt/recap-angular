@@ -6,11 +6,37 @@ import { LoginComponent } from './pages/login/login.component';
 import { loginGuard } from './pages/guard/login.guard';
 
 export const routes: Routes = [
-    {path:"" , pathMatch : "full" , component:CarComponent},
-    {path:"cars" , component :CarComponent},
-    {path : "brands" ,pathMatch :   "full" , component :BrandComponent  },
-    {path : "cars/brand/:brandId" , pathMatch : "full" , component : CarComponent},
-    {path :   "cars/add" , pathMatch : "full", component : CarAddComponent , canActivate:[loginGuard]},
-    {path: "auth/login" , pathMatch : "full" , component: LoginComponent}
-    // {path : "cars/brand/:brandId" , pathMatch : "full", loadComponent:()=>import('./pages/car/car.component').then(c=>c.CarComponent)}
+  {
+    path: '',
+    loadComponent: () =>
+      import('./pages/car/car.component').then((c) => c.CarComponent),
+  },
+  {
+    path: 'cars',
+    loadComponent: () =>
+      import('./pages/car/car.component').then((c) => c.CarComponent),
+  },
+
+  {
+    path: 'brands',
+    loadComponent: () =>
+      import('./pages/brand/brand.component').then((b) => b.BrandComponent),
+  },
+
+  {
+    path: 'cars',
+    loadComponent: () =>
+      import('./pages/car/car.component').then((c) => c.CarComponent),
+  },
+  {
+    path: 'cars/add',
+    pathMatch: 'full',
+    component: CarAddComponent,
+    canActivate: [loginGuard],
+  },
+  {
+    path: 'cars',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((l) => l.LoginComponent),
+  },
 ];

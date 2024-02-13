@@ -11,5 +11,5 @@ export interface Car{
     modelYear : number
     dailyPrice : any
     description : string
-    images : string[]
+    images : any[]
 }

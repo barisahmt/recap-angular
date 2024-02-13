@@ -124,9 +124,9 @@
                 <label for="description">İmages</label>
                 <input
                   multiple
+                  (change)="onChange($event)"
                   type="file"
                   id="images"
-                  formControlName="images"
                   class="form-control"
                   placeholder="İmages"
                 />

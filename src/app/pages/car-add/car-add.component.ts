@@ -17,6 +17,9 @@ import { EngineService } from '../../services/engine.service';
 import { FuelService } from '../../services/fuel.service';
 import { Fuel } from '../../models/fuel';
 import { Colour } from '../../models/color';
+import { CarDto } from '../../models/carDto';
+import { ClearCar } from '../../models/clearCar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car-add',
@@ -29,6 +32,7 @@ export class CarAddComponent implements OnInit {
   colours : Colour[]
   engines : Engine[]
   fuels : Fuel[]
+  files: File[];
   carAddForm: FormGroup;
   form: any;
 
@@ -39,7 +43,8 @@ export class CarAddComponent implements OnInit {
     private brandService : BrandService,
     private colourService : ColourService,
     private engineService : EngineService,
-    private fuelService : FuelService
+    private fuelService : FuelService , 
+    private router : Router
   ) {}
   ngOnInit(): void {
     this.createCarAddForm();
@@ -47,6 +52,11 @@ export class CarAddComponent implements OnInit {
     this.getColoursforAdd();
     this.getEnginesforAdd();
     this.getFuelsForAdd();
+  }
+  onChange(event: any) {
+    if (event.target.files) {
+      this.files = event.target.files;
+    }
   }
   createCarAddForm() {
     this.carAddForm = this.formBuider.group({
@@ -60,8 +70,7 @@ export class CarAddComponent implements OnInit {
       userId: ['1', Validators.required],
       modelYear: ['', Validators.required],
       dailyPrice: ['', Validators.required],
-      description: ['', Validators.required],
-      images : ['' , Validators.required]
+      description: ['', Validators.required]
     });
   }
   getBrandsforAdd() {
@@ -86,11 +95,10 @@ export class CarAddComponent implements OnInit {
       this.fuels = responce.data;
     })
   }
-
   add() {
     if (this.carAddForm.valid) {
       let car = Object.assign({}, this.carAddForm.value);
-      this.carService.addWithImages(car).subscribe((data) => {
+      this.carService.addWithImages(car , this.files).subscribe((data) => {
         console.log(data);
         this.toastrService.success('Car Added');
       });

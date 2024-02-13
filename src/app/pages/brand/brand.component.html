@@ -1,6 +1,6 @@
 <ul class="list-group">
   @for (brand of brands; track brand.id) {
-  <li
+  <li 
   (click)="setCurrentBrand(brand)"
   routerLink="/cars/brand/{{brand.id}}"
   [class]="setCurrentBrandActive(brand)">
