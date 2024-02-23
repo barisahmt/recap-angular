@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponceModel } from '../models/responce/listResponceModel';
 import { Car } from '../models/car';
@@ -10,6 +10,7 @@ import { CarDto } from '../models/carDto';
   providedIn: 'root',
 })
 export class CarService {
+
   apiUrl = 'http://localhost:56305/api/';
 
   constructor(private httpClient: HttpClient) {}

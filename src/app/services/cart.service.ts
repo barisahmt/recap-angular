@@ -7,7 +7,6 @@ import {CartItem} from '../models/cartItem';
   providedIn: 'root'
 })
 export class CartService {
-  
   constructor() { }
   addToCart(car:Car){
     let item = CartItems.find(c=>c.Car.id===car.id);
@@ -19,8 +18,6 @@ export class CartService {
       let cartItem = new CartItem();
       cartItem.Car = car
       cartItem.quantity = 1
-      console.log(cartItem)
-      console.log(cartItem.quantity)
       CartItems.push(cartItem)
     }
   }

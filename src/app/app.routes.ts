@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { loginGuard } from './pages/guard/login.guard';
 
 export const routes: Routes = [
+   {path : "cars/brand/:brandId" , pathMatch : "full" , component : CarComponent},
   {
     path: '',
     loadComponent: () =>
@@ -35,7 +36,7 @@ export const routes: Routes = [
     canActivate: [loginGuard],
   },
   {
-    path: 'cars',
+    path: 'auth/login',
     loadComponent: () =>
       import('./pages/login/login.component').then((l) => l.LoginComponent),
   },
