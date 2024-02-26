@@ -4,13 +4,17 @@ import { BrandComponent } from './pages/brand/brand.component';
 import { CarAddComponent } from './pages/car-add/car-add.component';
 import { LoginComponent } from './pages/login/login.component';
 import { loginGuard } from './pages/guard/login.guard';
+import { authGuard } from './pages/guard/auth.guard';
 
 export const routes: Routes = [
    {path : "cars/brand/:brandId" , pathMatch : "full" , component : CarComponent},
+   
+   {path : "cars/colour/:colourId" , pathMatch : "full" , component : CarComponent},
   {
     path: '',
     loadComponent: () =>
       import('./pages/car/car.component').then((c) => c.CarComponent),
+      canActivate : [authGuard]
   },
   {
     path: 'cars',

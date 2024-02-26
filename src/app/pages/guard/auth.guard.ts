@@ -4,19 +4,18 @@ import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 
-export const loginGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = (route, state) => {
 
   const auterService = inject(AuthService)
   const toastrService = inject(ToastrService)
   const router = inject(Router)
+
    if(auterService.isAuthenticated()){
     auterService.authentication.set(true)
     return true
    }
    else{
     auterService.authentication.set(false)
-    toastrService.info("Please Login")
-    router.navigate(["auth/login"])
-    return false;
+    return true;
    }
 };

@@ -12,16 +12,19 @@
   @if (filterText) {
     <div class="alert alert-danger">{{ filterText }} aradınız</div>
   }
-
   <div class="row">
     @for (car of cars | filterPipe: filterText; track car.id) {
       <div class="col-sm mt-5">
-        <div class="card shadow-sm" style="width: 18rem;">
-          <img src="{{ car.images[0] }}" />
+        <div (mouseenter)="enter(car.id)" (mouseleave)="leave()" class="card" style="width: 18rem">
+          <img  class="img" src="{{ car.images[0] }}" />
+          @if (hover() ===  car.id) {
+            <button class="show">Show</button>
+          }
+          @else if (!hover()) {
+
+          }
           <div class="card-body">
-            <p
-              class="card-text"
-            >
+            <p class="card-text">
               {{ car.description }}
             </p>
             <div class="d-flex justify-content-between align-items-center">
@@ -38,16 +41,21 @@
                 <p type="button">Price :{{ car.dailyPrice | currency }}</p>
               </div>
             </div>
-            <button class="btn btn-sm btn-success" (click)="addToCart(car)">
-              Add To Cart
-            </button>
-
             <button
-              class="btn btn-sm btn-outline-danger"
-              (click)="delete(car.id)"
+              style="margin-right: 10px"
+              class="add btn btn-sm btn-success"
+              (click)="addToCart(car)"
             >
-              Delete
+              Show
             </button>
+            @if (authen()) {
+              <button
+                class="delete btn btn-sm btn-outline-danger"
+                (click)="delete(car.id)"
+              >
+                Delete
+              </button>
+            }
           </div>
         </div>
       </div>

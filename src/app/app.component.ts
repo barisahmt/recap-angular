@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CarComponent } from './pages/car/car.component';
 import { BrandComponent } from './pages/brand/brand.component';
 import { CarAddComponent } from './pages/car-add/car-add.component';
+import { ColorComponent } from './pages/color/color.component';
 
 
 @Component({
@@ -21,6 +22,7 @@ import { CarAddComponent } from './pages/car-add/car-add.component';
     CarComponent,
     BrandComponent,
     CarAddComponent,
+    ColorComponent,
     FormsModule,
     ReactiveFormsModule,
     LoginComponent,

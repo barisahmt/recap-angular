@@ -1,0 +1,12 @@
+<h2>Colours</h2>
+<ul class="list-group">
+    @for(colour of colours; track colour.id){
+        <li
+        (click)="setCurrenColor(colour)"
+        routerLink="/cars/colour/{{colour.id}}"
+        [class]="setCurentColourActive(colour)"
+        >
+        {{colour.name}}
+    </li>
+    }
+</ul>

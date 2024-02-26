@@ -10,7 +10,6 @@ import { CarDto } from '../models/carDto';
   providedIn: 'root',
 })
 export class CarService {
-
   apiUrl = 'http://localhost:56305/api/';
 
   constructor(private httpClient: HttpClient) {}
@@ -24,7 +23,13 @@ export class CarService {
   getCarsByBrandId(brandId: number): Observable<ListResponceModel<Car>> {
     let newPath =
       this.apiUrl + 'Cars/getcardetailsbybrandid?brandId=' + brandId;
-
+    return this.httpClient.get<ListResponceModel<Car>>(newPath);
+  }
+  getCarsByColourId(colourId: number): Observable<ListResponceModel<Car>> {
+    let newPath =
+      this.apiUrl +
+      'Cars/getcardetailsbycolourid?colourId=' +
+      colourId;
     return this.httpClient.get<ListResponceModel<Car>>(newPath);
   }
 

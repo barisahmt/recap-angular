@@ -15,11 +15,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a
-            type="button"
-            class="nav-link active"
-            [routerLink]="'/'"
-          >
+          <a type="button" class="nav-link active" [routerLink]="'/'">
             Ana Sayfa
           </a>
         </li>
@@ -29,10 +25,32 @@
       </ul>
     </div>
     <ul>
-      <button type="button" class="btn btn-warning" [routerLink]="'cars/add'">Add Car</button>
+      <button type="button" class="btn btn-warning" [routerLink]="'cars/add'">
+        Add Car
+      </button>
     </ul>
-    <ul>
-      <button style="padding-left: 10px;" type="button" class="btn btn-primary" [routerLink]="'auth/login'">Login</button>
-    </ul>
+    @if (authen()) {
+      <ul>
+        <button
+          style="padding-left: 10px"
+          type="button"
+          class="btn btn-danger"
+          (click)="logout()"
+        >
+          Log out
+        </button>
+      </ul>
+    } @else if (!authen()) {
+      <ul>
+        <button
+          style="padding-left: 10px"
+          type="button"
+          class="btn btn-primary"
+          [routerLink]="'auth/login'"
+        >
+          Login
+        </button>
+      </ul>
+    }
   </div>
 </nav>

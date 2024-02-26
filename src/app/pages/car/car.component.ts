@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { Car } from '../../models/car';
 import {
   CurrencyPipe,
@@ -17,6 +17,9 @@ import { CartItem } from '../../models/cartItem';
 import { ClearCar } from '../../models/clearCar';
 import { CarDto } from '../../models/carDto';
 import { catchError } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
+import { Colour } from '../../models/color';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-car',
@@ -32,14 +35,21 @@ import { catchError } from 'rxjs';
     ToastrModule,
   ],
   templateUrl: './car.component.html',
+  styleUrl : './car.component.scss'
 })
 export class CarComponent implements OnInit {
+
+  favorites: any[] = [];
   cars: Car[] = [];
   dataLoaded = false;
   filterText = '';
   files: File[];
   carAdded = false;
   i: number = 0;
+  hover = signal(0)
+
+
+  authen = this.autherService.authentication
 
   constructor(
     private carService: CarService,
@@ -47,14 +57,18 @@ export class CarComponent implements OnInit {
     private toastrService: ToastrService,
     private cartService: CartService,
     private router: Router,
+    private autherService : AuthService,
+    private favoriteService : FavoriteService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId']) {
         this.getCarsByBrandId(params['brandId']);
-      } else {
-        this.getCars();
+      }else if (params['colourId']){
+        this.getCarsByColorId(params['colourId'])
+      }else{
+        this.getCars()
       }
     });
   }
@@ -85,8 +99,23 @@ export class CarComponent implements OnInit {
       this.cars = response.data;
     });
   }
+  getCarsByColorId(colourId : number){
+    this.carService.getCarsByColourId(colourId).subscribe((response) =>{
+      this.cars = response.data
+    })
+  }
   addToCart(car: Car) {
-    this.toastrService.success('Sepete Eklendi', car.brandName);
-    this.cartService.addToCart(car);
+    if(localStorage.getItem("token")){
+      this.toastrService.success('Sepete Eklendi', car.brandName);
+      this.cartService.addToCart(car);
+    }else{
+      this.toastrService.error("Please Login")
+    }
+  }
+  enter(id : number){
+    this.hover.set(id);
+  }
+  leave(){
+    this.hover.set(undefined)
   }
 }
