@@ -8,17 +8,21 @@
   stroke: red;
   opacity: 50%;
 }
+
 .bi:hover {
   color: red;
   opacity: 70%;
 }
+
 .bi::before {
   color: red;
 }
+
 .add {
   border-color: rgb(110, 110, 202);
   background-color: rgb(110, 110, 202);
 }
+
 .add:hover {
   border-color: rgb(70, 70, 133);
   background-color: rgb(70, 70, 133);
@@ -28,34 +32,45 @@
   border-color: rgb(60, 60, 112);
   background-color: rgb(60, 60, 112);
 }
+
 .delete {
   color: white;
   border-color: rgb(255, 58, 58);
   background-color: rgb(255, 58, 58);
 }
+
 .delete:hover {
   color: white;
   border-color: rgb(179, 39, 39);
   background-color: rgb(179, 39, 39);
 }
+
 .delete:active {
   color: white;
   border-color: rgb(173, 50, 50);
   background-color: rgb(173, 50, 50);
 }
+.card{
+    position: relative;
+    box-shadow: 4px 2px 4px 2px rgb(88, 88, 88);
+  }
 
-.card {
+.card:hover{
   position: relative;
   box-shadow: 8px 3px 8px 2px rgb(88, 88, 88);
 }
 .img {
   position: relative;
 }
+
 .show {
+  border: 10px;
+  background-color: grey;
   position: absolute;
   top: 20%;
   left: 40%;
 }
+
 .img-big {
   content: "";
   inset: 0;
