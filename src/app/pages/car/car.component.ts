@@ -2,6 +2,7 @@ import { Component, Input, OnInit, signal } from '@angular/core';
 import { Car } from '../../models/car';
 import {
   CurrencyPipe,
+  NgClass,
   NgFor,
   TitleCasePipe,
   UpperCasePipe,
@@ -33,6 +34,7 @@ import { FavoriteService } from '../../services/favorite.service';
     FormsModule,
     FilterPipe,
     ToastrModule,
+    NgClass
   ],
   templateUrl: './car.component.html',
   styleUrl : './car.component.scss'
