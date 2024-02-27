@@ -3,7 +3,7 @@
     @for(colour of colours; track colour.id){
         <li
         (click)="setCurrenColor(colour)"
-        routerLink="/cars/colour/{{colour.id}}"
+        routerLink="/home/cars/colour/{{colour.id}}"
         [class]="setCurentColourActive(colour)"
         >
         {{colour.name}}

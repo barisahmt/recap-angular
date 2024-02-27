@@ -19,7 +19,7 @@ export class NaviComponent {
 
   logout() {
     this.autherService.logout()
-    this.router.navigate(["cars"])
+    this.router.navigate(["/home"])
   }
 
 }
