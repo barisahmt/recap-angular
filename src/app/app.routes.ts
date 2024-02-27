@@ -5,11 +5,16 @@ import { CarAddComponent } from './pages/car-add/car-add.component';
 import { LoginComponent } from './pages/login/login.component';
 import { loginGuard } from './pages/guard/login.guard';
 import { authGuard } from './pages/guard/auth.guard';
+import { AddPanelComponent } from './pages/add-panel/add-panel.component';
 
 export const routes: Routes = [
    {path : "cars/brand/:brandId" , pathMatch : "full" , component : CarComponent},
 
    {path : "cars/colour/:colourId" , pathMatch : "full" , component : CarComponent},
+   {
+    path : "add-panel",
+    component : AddPanelComponent,
+   },
   {
     path: '',
     loadComponent: () =>
@@ -44,19 +49,4 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/login/login.component').then((l) => l.LoginComponent),
   },
-  {
-    path: 'brands/add',
-    canActivate : [authGuard],
-    loadComponent: () =>
-      import('./pages/brand-add/brand-add.component').then((l) => l.BrandAddComponent),
-
-  },
-  {
-    path: 'colours/add',
-    canActivate : [authGuard],
-    loadComponent: () =>
-      import('./pages/colour-add/colour-add.component').then((l) => l.ColourAddComponent),
-  },
-
-
 ];
