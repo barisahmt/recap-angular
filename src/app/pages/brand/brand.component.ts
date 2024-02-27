@@ -19,8 +19,8 @@ export class BrandComponent implements OnInit {
     this.getBrands();
   }
   getBrands() {
-    this.brandService.getBrands().subscribe((responce) => {
-      this.brands = responce.data;
+    this.brandService.getBrands().subscribe((response) => {
+      this.brands = response.data;
     });
   }
   setCurrentBrand(brand: Brand) {

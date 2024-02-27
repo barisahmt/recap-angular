@@ -17,7 +17,7 @@ export class FilterPipe implements PipeTransform {
       (c: Car) =>
         c.brandName.toLowerCase().includes(filterText) ||
         c.description.toLowerCase().includes(filterText) ||
-        c.colourName.toLowerCase().includes(filterText)
+        c.colourName.toLowerCase().includes(filterText) 
     );
   }
 }

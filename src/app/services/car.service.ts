@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListResponceModel } from '../models/responce/listResponceModel';
 import { Car } from '../models/car';
-import { ResponceModel } from '../models/responce/responceModel';
 import { CarDto } from '../models/carDto';
+import { ListResponseModel } from '../models/responce/listResponseModel';
+import { ResponseModel } from '../models/responce/responseModel';
 
 @Injectable({
   providedIn: 'root',
@@ -14,35 +14,33 @@ export class CarService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getCars(): Observable<ListResponceModel<Car>> {
+  getCars(): Observable<ListResponseModel<Car>> {
     let newPath = this.apiUrl + 'Cars/getcardetails';
 
-    return this.httpClient.get<ListResponceModel<Car>>(newPath);
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 
-  getCarsByBrandId(brandId: number): Observable<ListResponceModel<Car>> {
+  getCarsByBrandId(brandId: number): Observable<ListResponseModel<Car>> {
     let newPath =
       this.apiUrl + 'Cars/getcardetailsbybrandid?brandId=' + brandId;
-    return this.httpClient.get<ListResponceModel<Car>>(newPath);
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
-  getCarsByColourId(colourId: number): Observable<ListResponceModel<Car>> {
+  getCarsByColourId(colourId: number): Observable<ListResponseModel<Car>> {
     let newPath =
-      this.apiUrl +
-      'Cars/getcardetailsbycolourid?colourId=' +
-      colourId;
-    return this.httpClient.get<ListResponceModel<Car>>(newPath);
+      this.apiUrl + 'Cars/getcardetailsbycolourid?colourId=' + colourId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 
-  delete(id: number): Observable<ResponceModel> {
-    return this.httpClient.get<ResponceModel>(`${this.apiUrl}Cars?id=${id}`);
+  delete(id: number): Observable<ResponseModel> {
+    return this.httpClient.get<ResponseModel>(`${this.apiUrl}Cars?id=${id}`);
   }
 
-  add(car: Car): Observable<ResponceModel> {
+  add(car: Car): Observable<ResponseModel> {
     let newPath = this.apiUrl + 'Cars/add';
-    return this.httpClient.post<ResponceModel>(newPath, car);
+    return this.httpClient.post<ResponseModel>(newPath, car);
   }
 
-  addWithImages(car: CarDto, files: File[]): Observable<ResponceModel> {
+  addWithImages(car: CarDto, files: File[]): Observable<ResponseModel> {
     const formData = new FormData();
 
     for (let i = 0; i < files.length; i++) {
@@ -63,6 +61,6 @@ export class CarService {
     formData.append('carForAddDto.DailyPrice', JSON.stringify(car.dailyPrice));
     formData.append('carForAddDto.Description', car.description);
     let newPath = this.apiUrl + 'Cars/addWithImages';
-    return this.httpClient.post<ResponceModel>(newPath, formData);
+    return this.httpClient.post<ResponseModel>(newPath, formData);
   }
 }

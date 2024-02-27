@@ -24,12 +24,14 @@
         </li>
       </ul>
     </div>
-    <ul>
-      <button type="button" class="btn btn-warning" [routerLink]="'cars/add'">
-        Add Car
-      </button>
-    </ul>
-    @if (authen()) {
+    @if(authen()){
+      <ul>
+        <button type="button" class="btn btn-warning" [routerLink]="'cars/add'">
+          Add Panel
+        </button>
+      </ul>
+      @if (authen()) {
+    }
       <ul>
         <button
           style="padding-left: 10px"

@@ -1,6 +1,6 @@
-import { ResponceModel } from "./responce/responceModel"
+import { ResponseModel } from "./responce/responseModel"
 
-export interface LoginModel extends ResponceModel{
+export interface LoginModel extends ResponseModel{
     email : string
     password : string
 }

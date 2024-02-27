@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListResponceModel } from '../models/responce/listResponceModel';
 import { Engine } from '../models/engine';
-
+import { ListResponseModel } from '../models/responce/listResponseModel';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +11,7 @@ export class EngineService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getEngines(): Observable<ListResponceModel<Engine>> {
-    return this.httpClient.get<ListResponceModel<Engine>>(this.apiUrl + 'getall');
+  getEngines(): Observable<ListResponseModel<Engine>> {
+    return this.httpClient.get<ListResponseModel<Engine>>(this.apiUrl + 'getall');
   }
 }

@@ -74,32 +74,31 @@ export class CarAddComponent implements OnInit {
     });
   }
   getBrandsforAdd() {
-    this.brandService.getBrands().subscribe((responce) => {
-      this.brands = responce.data;
+    this.brandService.getBrands().subscribe((response) => {
+      this.brands = response.data;
     });
   }
   getColoursforAdd(){
-    this.colourService.getColors().subscribe((responce)=>{
-      this.colours = responce.data;
-      console.log(responce.data)
+    this.colourService.getColors().subscribe((response)=>{
+      this.colours = response.data;
+      console.log(response.data)
     })
   }
   getEnginesforAdd(){
-    this.engineService.getEngines().subscribe((responce) =>{
-      this.engines = responce.data;
+    this.engineService.getEngines().subscribe((response) =>{
+      this.engines = response.data;
     })
   }
   getFuelsForAdd(){
-    this.fuelService.getFuels().subscribe((responce)=>
+    this.fuelService.getFuels().subscribe((response)=>
     {
-      this.fuels = responce.data;
+      this.fuels = response.data;
     })
   }
   add() {
     if (this.carAddForm.valid) {
       let car = Object.assign({}, this.carAddForm.value);
       this.carService.addWithImages(car , this.files).subscribe((data) => {
-        console.log(data);
         this.toastrService.success('Car Added');
       });
     } else {

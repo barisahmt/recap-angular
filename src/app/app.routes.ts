@@ -8,7 +8,7 @@ import { authGuard } from './pages/guard/auth.guard';
 
 export const routes: Routes = [
    {path : "cars/brand/:brandId" , pathMatch : "full" , component : CarComponent},
-   
+
    {path : "cars/colour/:colourId" , pathMatch : "full" , component : CarComponent},
   {
     path: '',
@@ -44,4 +44,19 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/login/login.component').then((l) => l.LoginComponent),
   },
+  {
+    path: 'brands/add',
+    canActivate : [authGuard],
+    loadComponent: () =>
+      import('./pages/brand-add/brand-add.component').then((l) => l.BrandAddComponent),
+
+  },
+  {
+    path: 'colours/add',
+    canActivate : [authGuard],
+    loadComponent: () =>
+      import('./pages/colour-add/colour-add.component').then((l) => l.ColourAddComponent),
+  },
+
+
 ];

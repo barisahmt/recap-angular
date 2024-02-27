@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResponceModel } from '../models/responce/responceModel';
+import { ResponseModel } from '../models/responce/responseModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,13 @@ export class FavoriteService {
 
   constructor(private httpClient: HttpClient) { }
 
-  add(favorite: any): Observable<ResponceModel>{
+  add(favorite: any): Observable<ResponseModel>{
     let newPath: string = this.apiUrl;
-    return this.httpClient.post<ResponceModel>(newPath, favorite);
+    return this.httpClient.post<ResponseModel>(newPath, favorite);
   }
 
-  deleteFavorite(favorite: any): Observable<ResponceModel>{
+  deleteFavorite(favorite: any): Observable<ResponseModel>{
     let newPath: string = this.apiUrl;
-    return this.httpClient.post<ResponceModel>(newPath, favorite);  
+    return this.httpClient.post<ResponseModel>(newPath, favorite);  
   }
 }

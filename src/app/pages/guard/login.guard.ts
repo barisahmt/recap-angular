@@ -16,7 +16,6 @@ export const loginGuard: CanActivateFn = (route, state) => {
    else{
     auterService.authentication.set(false)
     toastrService.info("Please Login")
-    router.navigate(["auth/login"])
     return false;
    }
 };

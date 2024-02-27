@@ -1,0 +1,25 @@
+<div class="card shadow p-3 mb-5 bg-body rounded">
+    <div class="card-body">
+      <div class="card-title">
+        <h1 class="display-3">Add Colour</h1>
+      </div>
+      <form [formGroup]="colourAddForm">
+        <div class="mb-3">
+          <label for="brandName" class="form-label">Colour Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+            placeholder="Colour Name"
+          />
+        </div>
+      </form>
+      <div class="card-footer">
+        <button (click)="add()" routerLink="/colours/add" class="btn btn-outline-dark float-end">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+  
