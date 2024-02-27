@@ -1,5 +1,5 @@
 <h2>Brands</h2>
-<ul class="list-group">
+<ul class="list-group" style="height: 200px; overflow-y: auto;">
   @for (brand of brands; track brand.id) {
   <li 
   (click)="setCurrentBrand(brand)"
@@ -12,5 +12,3 @@
     <h6>{{currenBrand.name}}</h6>
   }
 </ul>
-
-<!-- [routerLink] = "['/car/brand', brand.id]" -->

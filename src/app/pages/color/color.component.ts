@@ -28,7 +28,7 @@ export class ColorComponent implements OnInit{
     })
   }
 
-  setCurrenColor(colour:Colour){
+  setCurrentColor(colour:Colour){
     this.currentColor = colour
   }
 

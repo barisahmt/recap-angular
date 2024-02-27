@@ -37,12 +37,7 @@ export const routes: Routes = [
       import('./pages/brand/brand.component').then((b) => b.BrandComponent),
   },
 
-  {
-    path: 'cars',
-    canActivate : [authGuard],
-    loadComponent: () =>
-      import('./pages/car/car.component').then((c) => c.CarComponent),
-  },
+ 
   {
     path: 'auth/login',
     loadComponent: () =>
@@ -74,6 +69,12 @@ export const routes: Routes = [
           import('./pages/car/car.component').then(
             (c) => c.CarComponent,
           ),
+      },
+      {
+        path: 'cars',
+        canActivate : [authGuard],
+        loadComponent: () =>
+          import('./pages/car/car.component').then((c) => c.CarComponent),
       },
     ],
   },

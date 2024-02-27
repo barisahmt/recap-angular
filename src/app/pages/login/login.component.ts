@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe(
         (response) => {
           this.toastrService.info(response.message);
-          this.roueter.navigate(["/home/cars/brand/1"])
+          this.roueter.navigate(["/home/cars"])
           if (this.rememberMe) {
             localStorage.setItem('token', response.data.token);
           }
