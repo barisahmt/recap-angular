@@ -71,11 +71,17 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'cars/details/:carId',
+        canActivate : [authGuard],
+        loadComponent: () =>
+          import('./pages/detail/detail.component').then((c) => c.DetailComponent),
+      },
+      {
         path: 'cars',
         canActivate : [authGuard],
         loadComponent: () =>
           import('./pages/car/car.component').then((c) => c.CarComponent),
-      },
+      }
     ],
   },
 ];

@@ -1,14 +1,12 @@
 <h2>Brands</h2>
-<ul class="list-group" style="height: 200px; overflow-y: auto;">
+<ul class="list-group" style="height: 210px; overflow-y: auto">
   @for (brand of brands; track brand.id) {
-  <li 
-  (click)="setCurrentBrand(brand)"
-  routerLink="/home/cars/brand/{{brand.id}}"
-  [class]="setCurrentBrandActive(brand)">
-    {{ brand.name }}
-  </li>
-  }
-  @if(currenBrand) {
-    <h6>{{currenBrand.name}}</h6>
+    <li
+      (click)="setCurrentBrand(brand)"
+      routerLink="/home/cars/brand/{{ brand.id }}"
+      [class]="setCurrentBrandActive(brand)"
+    >
+      {{ brand.name }}
+    </li>
   }
 </ul>

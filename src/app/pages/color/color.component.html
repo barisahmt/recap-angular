@@ -1,12 +1,12 @@
 <h2>Colours</h2>
-<ul class="list-group" style="height: 200px; overflow-y: auto;">
-    @for(colour of colours; track colour.id){
-        <li
-        (click)="setCurrentColor(colour)"
-        routerLink="/home/cars/colour/{{colour.id}}"
-        [class]="setCurentColourActive(colour)"
-        >
-        {{colour.name}}
+<ul class="list-group" style="height: 210px; overflow-y: auto">
+  @for (colour of colours; track colour.id) {
+    <li
+      (click)="setCurrentColor(colour)"
+      routerLink="/home/cars/colour/{{ colour.id }}"
+      [class]="setCurentColourActive(colour)"
+    >
+      {{ colour.name }}
     </li>
-    }
+  }
 </ul>

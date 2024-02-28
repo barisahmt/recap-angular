@@ -106,6 +106,9 @@ export class CarComponent implements OnInit {
       this.cars = response.data
     })
   }
+  getById(carId : number){
+    this.router.navigate(["home/cars/details/" + carId] )
+  }
   addToCart(car: Car) {
     if(localStorage.getItem("token")){
       this.toastrService.success('Sepete Eklendi', car.brandName);
@@ -120,4 +123,5 @@ export class CarComponent implements OnInit {
   leave(){
     this.hover.set(undefined)
   }
+
 }

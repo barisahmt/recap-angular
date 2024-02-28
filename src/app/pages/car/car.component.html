@@ -15,14 +15,22 @@
   <div class="row">
     @for (car of cars | filterPipe: filterText; track car.id) {
       <div class="col-sm mt-5">
-        <div (mouseenter)="enter(car.id)" (mouseleave)="leave()" class="card" style="width: 18rem">
-          <img  class="img" [ngClass] = "hover() ===  car.id ? 'img-big':''" src="{{ car.images[0] }}" />
-          @if (hover() ===  car.id) {
-            <button class="show btn btn-primary">Show</button>
-          }
-          @else if (!hover()) {
-
-          }
+        <div
+          (mouseenter)="enter(car.id)"
+          (mouseleave)="leave()"
+          class="card"
+          style="width: 18rem"
+        >
+          <img
+            class="img"
+            [ngClass]="hover() === car.id ? 'img-big' : ''"
+            src="{{ car.images[0] }}"
+          />
+          @if (hover() === car.id) {
+            <button class="show btn btn-primary" (click)="getById(car.id)">
+              Show
+            </button>
+          } @else if (!hover()) {}
           <div class="card-body">
             <p class="card-text">
               {{ car.description }}

@@ -9,6 +9,7 @@ import { Brand } from '../../models/brand';
   standalone: true,
   imports: [NgFor, RouterLink],
   templateUrl: './brand.component.html',
+  styleUrl : './brand-component.scss'
 })
 export class BrandComponent implements OnInit {
   brands: Brand[];

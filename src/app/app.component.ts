@@ -9,6 +9,7 @@ import { CarComponent } from './pages/car/car.component';
 import { BrandComponent } from './pages/brand/brand.component';
 import { CarAddComponent } from './pages/car-add/car-add.component';
 import { ColorComponent } from './pages/color/color.component';
+import { DetailComponent } from './pages/detail/detail.component';
 
 
 @Component({
@@ -26,6 +27,7 @@ import { ColorComponent } from './pages/color/color.component';
     FormsModule,
     ReactiveFormsModule,
     LoginComponent,
+    DetailComponent
   ],
   templateUrl: './app.component.html',
 })
