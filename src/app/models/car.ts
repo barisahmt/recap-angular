@@ -1,15 +1,14 @@
-export interface Car{
-    id :number
-    brandName : string
-    colourName : string
-    companyName :string
-    engineType : string
-    fuelId : number
-    fuelType : string
-    doorNumber : number
-    userId : number
-    modelYear : number
-    dailyPrice : any
-    description : string
-    images : any[]
+export interface Car {
+  id: number;
+  brandName: string;
+  colourName: string;
+  companyName: string;
+  engineType: string;
+  fuelType: string;
+  doorNumber: number;
+  modelYear: number;
+  dailyPrice: any;
+  description: string;
+  fuelConsumption: number;
+  images: any[];
 }

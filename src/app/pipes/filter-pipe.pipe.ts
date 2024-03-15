@@ -6,11 +6,12 @@ import { Car } from '../models/car';
   standalone: true,
 })
 export class FilterPipe implements PipeTransform {
+
   transform(value: Car[], filterText: string): Car[] {
     filterText = filterText.toLowerCase();
 
     if (!filterText) {
-      return value;
+      return value;   
     }
 
     return value.filter(

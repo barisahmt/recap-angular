@@ -1,5 +1,4 @@
 <div class="mb-3">
-  <label for="filterText" class="form-label">Search A Car</label>
   <input
     type="text"
     [(ngModel)]="filterText"
@@ -22,7 +21,7 @@
           style="width: 18rem"
         >
           <img
-            class="img"
+            class="img" 
             [ngClass]="hover() === car.id ? 'img-big' : ''"
             src="{{ car.images[0] }}"
           />

@@ -50,15 +50,19 @@
   border-color: rgb(173, 50, 50);
   background-color: rgb(173, 50, 50);
 }
-.card{
-    position: relative;
-    box-shadow: 4px 2px 4px 2px rgb(88, 88, 88);
-  }
-
-.card:hover{
+.card {
   position: relative;
-  box-shadow: 8px 3px 8px 2px rgb(88, 88, 88);
+  box-shadow: 4px 2px 4px 2px rgb(88, 88, 88);
+  &:hover {
+    position: relative;
+    box-shadow: 6px 3px 8px 2px rgb(88, 88, 88);
+  }
 }
+
+// .card:hover{
+//   position: relative;
+//   box-shadow: 6px 3px 8px 2px rgb(88, 88, 88);
+// }
 .img {
   position: relative;
 }
@@ -67,16 +71,16 @@
   padding-left: 50px;
   padding-right: 50px;
   border: 10px;
-  background-color: rgb(128, 128, 128 , 0.3);
+  background-color: rgb(128, 128, 128, 0.3);
   position: absolute;
   top: 20%;
   left: 28%;
 }
-.show:hover{
-  background-color: rgb(87, 87, 87 , 0.3);
+.show:hover {
+  background-color: rgb(87, 87, 87, 0.3);
 }
-.show:active{
-  background-color: rgb(75, 75, 75 , 0.3  );
+.show:active {
+  background-color: rgb(75, 75, 75, 0.3);
 }
 
 .img-big {

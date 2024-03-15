@@ -18,26 +18,17 @@ export const routes: Routes = [
     canActivate : [authGuard]
   },
   {
+    path: 'cars/details/:carId',
+    canActivate : [authGuard],
+    loadComponent: () =>
+      import('./pages/detail/detail.component').then((c) => c.DetailComponent),
+  },
+  {
     path: '',
     loadComponent: () =>
       import('./pages/car/car.component').then((c) => c.CarComponent),
     canActivate: [authGuard],
-  },
-  {
-    path: 'cars',
-    canActivate : [authGuard],
-    loadComponent: () =>
-      import('./pages/car/car.component').then((c) => c.CarComponent),
-  },
-
-  {
-    path: 'brands',
-    canActivate : [authGuard],
-    loadComponent: () =>
-      import('./pages/brand/brand.component').then((b) => b.BrandComponent),
-  },
-
- 
+  }, 
   {
     path: 'auth/login',
     loadComponent: () =>
@@ -69,12 +60,6 @@ export const routes: Routes = [
           import('./pages/car/car.component').then(
             (c) => c.CarComponent,
           ),
-      },
-      {
-        path: 'cars/details/:carId',
-        canActivate : [authGuard],
-        loadComponent: () =>
-          import('./pages/detail/detail.component').then((c) => c.DetailComponent),
       },
       {
         path: 'cars',

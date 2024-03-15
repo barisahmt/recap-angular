@@ -28,7 +28,7 @@ import { FavoriteService } from '../../services/favorite.service';
   imports: [
     NgFor,
     TitleCasePipe,
-    UpperCasePipe,
+    UpperCasePipe,  
     CurrencyPipe,
     VatAddedPipe,
     FormsModule,
@@ -107,7 +107,7 @@ export class CarComponent implements OnInit {
     })
   }
   getById(carId : number){
-    this.router.navigate(["home/cars/details/" + carId] )
+    this.router.navigate(["/cars/details/" + carId] )
   }
   addToCart(car: Car) {
     if(localStorage.getItem("token")){

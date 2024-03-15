@@ -1,2 +1,9 @@
-@for (car of car; track car.id) {
-}
+<div class="container">
+  <app-navi />
+  @for (cars of car; track cars.id) {
+    {{ cars.id }}
+    @for (carImage of carImages; track carImage.id) {
+      <img class="img" src="{{ carImage.imageUrl}}" />
+    }
+  }
+</div>
